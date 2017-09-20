@@ -8,6 +8,35 @@ namespace Задание10
 {
     class Program
     {
+        static int InputX(int left, int right)//ввод x 
+        { bool ok = false;
+            int number = -100;
+            do
+            {
+                try
+                {
+                    number = Convert.ToInt32(Console.ReadLine());
+                    if (number >= left && number < right) ok = true;
+                    else
+                    {
+                        Console.WriteLine("Ошибка ввода");
+                        ok = false;
+                    }
+                }
+                catch (FormatException)
+                {
+                    Console.WriteLine("Ошибка ввода");
+                    ok = false;
+                }
+                catch (OverflowException)
+                {
+                    Console.WriteLine("Ошибка ввода");
+                    ok = false;
+                }
+            } while (!ok);
+            return number;
+        }
+
         static void Main(string[] args)
         {
             Polinom polinom = new Polinom();
@@ -31,8 +60,7 @@ namespace Задание10
             do
             {
                 Console.WriteLine("Введите x (для выхода введите 0)");
-                x = int.Parse(Console.ReadLine());
-
+                x = InputX(0, 100);
                 if (x != 0)
                 {
                     int res = polinom.Calc(x);
