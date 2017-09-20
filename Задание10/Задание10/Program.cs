@@ -60,7 +60,7 @@ namespace Задание10
             do
             {
                 Console.WriteLine("Введите x (для выхода введите 0)");
-                x = InputX(0, 100);
+                x = InputX(-100, 100);
                 if (x != 0)
                 {
                     int res = polinom.Calc(x);
